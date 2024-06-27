@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
 import { useLoginLG } from "../../hooks/useLoginLG"
-
+import { FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa6";
 const LoginLG = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -45,7 +46,8 @@ const LoginLG = () => {
             value={password}
             placeholder="Password"
           />
-          <img src={process.env.PUBLIC_URL + '/eye.svg'} alt="eye" className="absolute top-1/2 right-3 -translate-y-1/2"/>
+          <button     className="absolute right-2 top-1/2 transform -translate-y-1/2" onClick={()=>setShow(!show)}>{show ? (<FaRegEye />) : (<FaRegEyeSlash />)}</button>
+          {/* <img src={process.env.PUBLIC_URL + '/eye.svg'} alt="eye" className="absolute top-1/2 right-3 -translate-y-1/2"/> */}
           </div>
           <button disabled={isLoading} className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Log In</button>
           {error && <div className="error">{error}</div>}
